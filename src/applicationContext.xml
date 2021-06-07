@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--EXAMPLE create object Baseball Coach (firstCoach) without argument  -->
+    <bean id = "myCoach" class = "com.minhle.TrackCoach">
+        <constructor-arg ref = "unluckyExercises" />
+    </bean>
+    <bean id = "unluckyExercises" class = "com.minhle.UnluckyExercises">  </bean>
+
+
+    <!--EXAMPLE create object Baseball Coach (secondCoach) with argument  -->
+    <bean id ="luckyExercises" class = "com.minhle.VeryLuckyExercises"> </bean>
+    <bean id = "myCoachCanSet" class="com.minhle.BaseballCoach" >
+        <property name="luckyExercises" ref="luckyExercises"> </property>
+    </bean>
+
+    <!--EXAMPLE create object Swim Coach (thirdCoach) with literal argument  -->
+
+    <bean id = "myCoachWithLiteralSet" class="com.minhle.SwimCoach">
+
+         <property name="_mLuckyExercises" ref = "luckyExercises"> </property>
+        <property name="_mName" value="Robert"> </property>
+        <property name="_mPhone" value = "#{new Long (3255008639L)}"  > </property>
+    </bean>
+</beans>
