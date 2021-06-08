@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util
+       https://www.springframework.org/schema/util/spring-util.xsd">
+
     <!--EXAMPLE create object Baseball Coach (firstCoach) without argument  -->
     <bean id = "myCoach" class = "com.minhle.TrackCoach">
         <constructor-arg ref = "unluckyExercises" />
@@ -17,10 +20,17 @@
 
     <!--EXAMPLE create object Swim Coach (thirdCoach) with literal argument  -->
 
+    <!-- Inject properties file here so we will not hard coding -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value> classpath:sport.properties </value>
+        </property>
+    </bean>
+
     <bean id = "myCoachWithLiteralSet" class="com.minhle.SwimCoach">
 
          <property name="_mLuckyExercises" ref = "luckyExercises"> </property>
-        <property name="_mName" value="Robert"> </property>
-        <property name="_mPhone" value = "#{new Long (3255008639L)}"  > </property>
+        <property name="_mName" value="${foo.name}"> </property>
+        <property name="_mPhone" value="${foo.phone}"> </property>
     </bean>
 </beans>
