@@ -35,6 +35,12 @@ public class HelloSpringApp {
 		System.out.println(thirdCoach.getDailyWorkout());
 		System.out.println(thirdCoach.letCheckMyLuck());
 		System.out.println(thirdCoach.toString());
+		System.out.println("\n----------------------------------------\n");
+
+		//Do some example with random exercise class
+		Coach fourthCoach = context.getBean("myCoachWithRandomExercises",Coach.class);
+		System.out.println(fourthCoach.getDailyWorkout());
+		System.out.println(fourthCoach.letCheckMyLuck());
 		// close the context
 		context.close();
 	}

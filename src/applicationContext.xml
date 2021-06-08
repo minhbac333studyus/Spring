@@ -33,4 +33,10 @@
         <property name="_mName" value="${foo.name}"> </property>
         <property name="_mPhone" value="${foo.phone}"> </property>
     </bean>
+
+    <!-- Example of random exercise -->
+    <bean id = "randomExercises" class = "com.minhle.RandomExercises"> </bean>
+    <bean id ="myCoachWithRandomExercises" class = "com.minhle.TrackCoach">
+        <property name="luckyExercises" ref="randomExercises"> </property>
+    </bean>
 </beans>
